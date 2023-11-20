@@ -19,15 +19,18 @@ const Body = () => {
   }, []);
 
   async function getRestaurants() {
-    const data = await fetch(
-      FETCH_RESTAURANT_URL
-    );
+    const data = await fetch("https://corsproxy.io/?" + FETCH_RESTAURANT_URL);
+    console.log(data);
     const json = await data.json();
-    setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setAllRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
     // setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     // console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     // setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilteredRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   }
   if (!allRestaurants) return null;
 
@@ -45,7 +48,6 @@ const Body = () => {
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
-
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               //need to filter the data
@@ -96,7 +98,6 @@ const Body = () => {
             >
               <RestaurantCard {...restaurant?.info} />
             </Link>
-
           );
         })}
       </div>

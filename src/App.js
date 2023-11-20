@@ -44,6 +44,7 @@ const AppLayout = () => {
     </Provider>
   );
 };
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
