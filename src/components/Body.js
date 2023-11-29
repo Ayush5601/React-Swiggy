@@ -20,7 +20,6 @@ const Body = () => {
 
   async function getRestaurants() {
     const data = await fetch("https://corsproxy.io/?" + FETCH_RESTAURANT_URL);
-    console.log(data);
     const json = await data.json();
     setAllRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -59,7 +58,7 @@ const Body = () => {
         />
         <button
           data-testid="search-btn"
-          className="p-2 m-2 bg-purple-900 hover:bg-gray-500 text-white rounded-md"
+          className="p-2 bg-purple-900 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
             //need to filter the data
             const data = filterData(searchText, allRestaurants);
@@ -70,6 +69,7 @@ const Body = () => {
           Search
         </button>
         <input
+          className="ml-10"
           value={user.name}
           onChange={(e) =>
             setUser({
@@ -78,7 +78,7 @@ const Body = () => {
             })
           }
         ></input>
-        <input
+        {/* <input
           value={user.email}
           onChange={(e) =>
             setUser({
@@ -86,7 +86,7 @@ const Body = () => {
               email: e.target.value,
             })
           }
-        ></input>
+        ></input> */}
       </div>
       <div className="flex flex-wrap " data-testid="res-list">
         {/* You have to write logic for NO restraunt fount here */}

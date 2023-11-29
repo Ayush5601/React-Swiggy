@@ -22,7 +22,7 @@ const Header = () => {
   const { user } = useContext(UserContext);
 
   const cartItems = useSelector((store) => store.cart.items);
-  
+
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
       <Title />
@@ -48,13 +48,19 @@ const Header = () => {
           </Link>
         </ul>
       </div>
-      <h1 className = "mt-10" data-testid="online-status">Status : {isOnline ? "✅" : "🔴"}</h1>
-      <span className="p-10 font-bold text-red-900">{user.name}</span>
+      <h1 className="mt-10" data-testid="online-status">
+        Status : {isOnline ? "✅" : "🔴"}
+      </h1>
       {isLoggedIn ? (
-        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+        <button className="mr-10" onClick={() => setIsLoggedIn(false)}>
+          Logout
+        </button>
       ) : (
-        <button className="mr-6" onClick={() => setIsLoggedIn(true)}>Login</button>
+        <button className="mr-10" onClick={() => setIsLoggedIn(true)}>
+          Login
+        </button>
       )}
+      <span className="p-10 font-bold text-red-900">{user.name}</span>
     </div>
   );
 };
