@@ -31,8 +31,9 @@ const RestaurantMenu = () => {
           }
         </span>
         <img
-          className="pb-2 mt-2"
+          className="pb-2 mt-2 rounded-lg"
           src={IMG_CDN_URL + restaurant[0]?.card?.card?.info?.cloudinaryImageId}
+          alt="restaurantImage"
         />
         <span>{restaurant[0]?.card?.card?.info?.areaName}, </span>
         <span>{restaurant[0]?.card?.card?.info?.city}</span>
