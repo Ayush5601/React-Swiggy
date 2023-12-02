@@ -49,40 +49,46 @@ const RestaurantMenu = () => {
   });
 
   return (
-    <div className="flex justify-center">
-      <div className="m-2">
+    <div className="m-2">
+      <div className="text-center">
         <span className="text-4xl pb-4 font-semibold mr-2">{name} -</span>
         <span className="text-xl mb-4 font-semibold">
           {aggregatedDiscountInfoV2.descriptionList[0].meta}
         </span>
-        <Carousel images={foodImages} />
-        <span>{areaName}, </span>
-        <span>{city}</span>
-        <h3 className="font-bold pt-2">{costForTwoMessage}</h3>
-        <h3 className="text-2xl pt-2">
-          {avgRatingString}⭐ [{totalRatingsString}]
-        </h3>
       </div>
-      <div className="p-5">
-        <h1 className="text-xl font-semibold">Menu: (Recommended)</h1>
-        <ul data-testid="menu">
-          {recommendedCategory?.card?.card?.itemCards?.map((item) => {
-            return (
-              <li key={item?.card?.info?.id}>
-                {item?.card?.info?.name} - {" ₹"}{" "}
-                {(item?.card?.info?.defaultPrice || item?.card?.info?.price) /
-                  100}
-                <button
-                  data-testid="addBtn"
-                  className="p-1 font-bold bg-green-50 italic ml-4"
-                  onClick={() => addFoodItem(item)}
-                >
-                  Add
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="flex justify-center">
+        <div className="p-5">
+          <Carousel images={foodImages} />
+          <div className="text-center">
+            <span>{areaName}, </span>
+            <span>{city}</span>
+            <h3 className="font-bold pt-2 italic">{costForTwoMessage}</h3>
+            <h3 className="text-xl pt-2 font-light">
+              {avgRatingString}⭐ [{totalRatingsString}]
+            </h3>
+          </div>
+        </div>
+        <div className="p-5">
+          <h1 className="text-xl font-semibold">Menu: (Recommended)</h1>
+          <ul data-testid="menu">
+            {recommendedCategory?.card?.card?.itemCards?.map((item) => {
+              return (
+                <li key={item?.card?.info?.id}>
+                  {item?.card?.info?.name} - {" ₹"}{" "}
+                  {(item?.card?.info?.defaultPrice || item?.card?.info?.price) /
+                    100}
+                  <button
+                    data-testid="addBtn"
+                    className="p-1 font-bold bg-green-50 italic ml-4"
+                    onClick={() => addFoodItem(item)}
+                  >
+                    Add
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );

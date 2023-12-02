@@ -15,7 +15,7 @@ const Carousel = ({ images }) => {
   }, []);
 
   return images.map((image, index) => (
-    <div key={index}>
+    <div key={index} className="w-[500px]">
       <img
         className={`pb-2 mt-2 w-full h-full rounded-3xl ${
           activeIndex === index ? "block" : "hidden"
