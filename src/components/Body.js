@@ -1,5 +1,5 @@
 import { restaurantList } from "../contants";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromtedLabel } from "./RestaurantCard";
 import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -14,6 +14,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const { user, setUser } = useContext(UserContext);
 
+  const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -21,12 +23,11 @@ const Body = () => {
   async function getRestaurants() {
     const data = await fetch("https://corsproxy.io/?" + FETCH_RESTAURANT_URL);
     const json = await data.json();
+
     setAllRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    // console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    // setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+
     setFilteredRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -78,15 +79,6 @@ const Body = () => {
             })
           }
         ></input>
-        {/* <input
-          value={user.email}
-          onChange={(e) =>
-            setUser({
-              ...user,
-              email: e.target.value,
-            })
-          }
-        ></input> */}
       </div>
       <div className="flex flex-wrap " data-testid="res-list">
         {/* You have to write logic for NO restraunt fount here */}
@@ -96,7 +88,11 @@ const Body = () => {
               to={"/restaurant/" + restaurant?.info?.id}
               key={restaurant?.info?.id}
             >
-              <RestaurantCard {...restaurant?.info} />
+              {restaurant?.info.promoted ? (
+                <RestaurantCardPromoted {...restaurant?.info} />
+              ) : (
+                <RestaurantCard {...restaurant?.info} />
+              )}
             </Link>
           );
         })}
