@@ -49,14 +49,14 @@ const Header = () => {
         </ul>
       </div>
       <h1 className="mt-10" data-testid="online-status">
-        Status : {isOnline ? "✅" : "🔴"}
+        OnlineStatus : {isOnline ? "✅" : "🔴"}
       </h1>
       {isLoggedIn ? (
-        <button className="mr-10" onClick={() => setIsLoggedIn(false)}>
+        <button className="mr-10 pb-2" onClick={() => setIsLoggedIn(false)}>
           Logout
         </button>
       ) : (
-        <button className="mr-10" onClick={() => setIsLoggedIn(true)}>
+        <button className="mr-10 pb-2" onClick={() => setIsLoggedIn(true)}>
           Login
         </button>
       )}

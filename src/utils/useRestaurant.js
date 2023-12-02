@@ -12,8 +12,7 @@ const useRestaurant = (resId) => {
     const data = await fetch("https://corsproxy.io/?" + FETCH_MENU_URL + resId);
     const json = await data.json();
 
-    // console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
-    setRestauraunt(json?.data?.cards);
+    setRestauraunt(json.data);
   }
 
   return restaurant;
