@@ -80,7 +80,7 @@ const Body = () => {
           }
         ></input>
       </div>
-      <div className="flex flex-wrap " data-testid="res-list">
+      <div className="flex flex-wrap justify-center" data-testid="res-list">
         {/* You have to write logic for NO restraunt fount here */}
         {filteredRestaurants.map((restaurant) => {
           return (
