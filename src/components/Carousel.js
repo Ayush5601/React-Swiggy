@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../contants";
 
-const Carousel = ({ images }) => {
+const Carousel = ({ children: images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -14,17 +14,18 @@ const Carousel = ({ images }) => {
     };
   }, []);
 
-  return images.map((image, index) => (
-    <div key={index} className="w-[500px]">
-      <img
-        className={`pb-2 mt-2 w-full h-full rounded-3xl ${
-          activeIndex === index ? "block" : "hidden"
-        }`}
-        src={IMG_CDN_URL + image}
-        alt="restaurantFoodImage"
-      />
+  return (
+    <div className="overflow-hidden">
+      <div
+        className="flex transition ease-out duration-500"
+        style={{
+          transform: `translateX(-${activeIndex * 100}%)`,
+        }}
+      >
+        {images}
+      </div>
     </div>
-  ));
+  );
 };
 
 export default Carousel;
@@ -44,4 +45,19 @@ we fire setInterval only once.
 
 also setTimeOut takes the initial value of all the variables, hence we had to use (prvIndex) as a callback
 https://eight-bites.blog/en/2021/05/setinterval-setstate/ refer this article for depth
+*/
+
+/*
+Before Animation code:
+  return images.map((image, index) => (
+    <div key={index}>
+      <img
+        className={`pb-2 mt-2 w-full h-full rounded-3xl ${
+          activeIndex === index ? "block" : "hidden"
+        }`}
+        src={IMG_CDN_URL + image}
+        alt="restaurantFoodImage"
+      />
+    </div>
+  ));
 */

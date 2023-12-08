@@ -49,7 +49,7 @@ const RestaurantMenu = () => {
   });
 
   return (
-    <div className="m-2">
+    <div className="m-2 min-h-screen">
       <div className="text-center">
         <span className="text-4xl pb-4 font-semibold mr-2">{name} -</span>
         <span className="text-xl mb-4 font-semibold">
@@ -58,7 +58,18 @@ const RestaurantMenu = () => {
       </div>
       <div className="flex justify-center">
         <div className="p-5">
-          <Carousel images={foodImages} />
+          {/* <Carousel images={foodImages} /> */}
+          <div className="w-[500px] mt-2">
+            <Carousel>
+              {foodImages.map((s) => (
+                <img
+                  className="mb-2"
+                  src={IMG_CDN_URL + s}
+                  alt="restaurantFoodImage"
+                />
+              ))}
+            </Carousel>
+          </div>
           <div className="text-center">
             <span>{areaName}, </span>
             <span>{city}</span>
