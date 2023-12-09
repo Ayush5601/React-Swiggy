@@ -24,16 +24,16 @@ https://fooddddy.netlify.app/
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
 
-- Header
-- - Logo
-- - Nav Items
-- Body
-- - Search
-- - RestaurantContainer
-- - RestaurantCard
+Header
+  - Logo
+  - Nav Items
+Body
+  - Search
+  - RestaurantContainer
+  - RestaurantCard
       - Img
       - Name of Res, Star Rating, cuisine, delery tie
-- Footer
+Footer
   - Copyright
   - Links
   - Address
