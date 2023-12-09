@@ -31,13 +31,13 @@ https://fooddddy.netlify.app/
 - - Search
 - - RestaurantContainer
 - - RestaurantCard
--      - Img
--      - Name of Res, Star Rating, cuisine, delery tie
+      - Img
+      - Name of Res, Star Rating, cuisine, delery tie
 - Footer
-- - Copyright
-- - Links
-- - Address
-- - Contact
+  - Copyright
+  - Links
+  - Address
+  - Contact
 
 Two types of Export/Import
 
