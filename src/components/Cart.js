@@ -12,18 +12,17 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <span className="font-bold text-3xl m-3">
-        {" "}
-        Cart Items - {cartItems.length}
-      </span>
+    <div className="text-center min-h-screen m-4">
+      <h1 className="font-bold text-2xl"> Cart Items - {cartItems.length}</h1>
       <button
         className="bg-green-100 p-2 m-3 rounded-lg"
-        onClick={() => handleClearCart()}
+        onClick={handleClearCart}
       >
         Clear Cart
       </button>
-
+      {cartItems?.length === 0 && (
+        <h1> Cart is empty. Add Items to the cart!</h1>
+      )}
       <div className="flex flex-wrap flex-auto grow ml-14">
         {cartItems.map((item) => (
           <FoodItem key={item.card.info.id} {...item.card.info} />

@@ -59,10 +59,11 @@ const RestaurantMenu = () => {
       <div className="flex justify-center">
         <div className="p-5">
           {/* <Carousel images={foodImages} /> */}
-          <div className="w-[500px] mt-2">
+          <div className="w-[500px] mt-10">
             <Carousel>
-              {foodImages.map((s) => (
+              {foodImages.map((s, index) => (
                 <img
+                  key={s}
                   className="mb-2"
                   src={IMG_CDN_URL + s}
                   alt="restaurantFoodImage"
@@ -73,8 +74,8 @@ const RestaurantMenu = () => {
           <div className="text-center">
             <span>{areaName}, </span>
             <span>{city}</span>
-            <h3 className="font-bold pt-2 italic">{costForTwoMessage}</h3>
-            <h3 className="text-xl pt-2 font-light">
+            <h3 className="font-bold pt-1 italic">{costForTwoMessage}</h3>
+            <h3 className="text-xl font-light">
               {avgRatingString}⭐ [{totalRatingsString}]
             </h3>
           </div>
