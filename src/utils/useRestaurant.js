@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FETCH_MENU_URL } from "../contants";
+import { FETCH_MENU_URL, PROXY_URL } from "../contants";
 
 const useRestaurant = (resId) => {
   const [restaurant, setRestauraunt] = useState(null);
@@ -9,10 +9,14 @@ const useRestaurant = (resId) => {
   }, []);
 
   async function getRestaurantInfo() {
-    const data = await fetch("https://corsproxy.io/?" + FETCH_MENU_URL + resId);
-    const json = await data.json();
+    try {
+      const data = await fetch(PROXY_URL + FETCH_MENU_URL + resId);
+      const json = await data.json();
 
-    setRestauraunt(json.data);
+      setRestauraunt(json.data);
+    } catch (err) {
+      console.log("error ", err);
+    }
   }
 
   return restaurant;

@@ -1,4 +1,4 @@
-export const FETCH_RESTAURANT_URL = 
+export const FETCH_RESTAURANT_URL =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING";
 
 export const IMG_CDN_URL =
@@ -6,6 +6,8 @@ export const IMG_CDN_URL =
 
 export const FETCH_MENU_URL =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.161098872453437&lng=79.07760199159384&restaurantId=";
+
+export const PROXY_URL = "https://thingproxy.freeboard.io/fetch/";
 
 export const restaurantList = [
   {

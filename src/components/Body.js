@@ -1,12 +1,10 @@
-import { restaurantList } from "../contants";
 import RestaurantCard, { withPromtedLabel } from "./RestaurantCard";
 import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
-import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
-import { FETCH_RESTAURANT_URL } from "../contants";
+import { FETCH_RESTAURANT_URL, PROXY_URL } from "../contants";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -21,16 +19,22 @@ const Body = () => {
   }, []);
 
   async function getRestaurants() {
-    const data = await fetch("https://corsproxy.io/?" + FETCH_RESTAURANT_URL);
-    const json = await data.json();
+    try {
+      const data = await fetch(PROXY_URL + FETCH_RESTAURANT_URL);
+      const json = await data.json();
 
-    setAllRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      setAllRestaurants(
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
 
-    setFilteredRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      setFilteredRestaurants(
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (err) {
+      console.log("error ", err);
+    }
   }
   if (!allRestaurants) return null;
 
