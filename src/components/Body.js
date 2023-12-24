@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import UserContext from "../utils/UserContext";
 import { FETCH_RESTAURANT_URL, PROXY_URL } from "../contants";
+import { addRestaurants } from "../utils/restaurantsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Body = () => {
+  // const dispatch = useDispatch();
+  // const restaurants = useSelector((store) => store.restaurants.items);
+
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -23,20 +28,17 @@ const Body = () => {
       const data = await fetch(PROXY_URL + FETCH_RESTAURANT_URL);
       const json = await data.json();
 
-      setAllRestaurants(
+      const restaurantList =
         json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
+          ?.restaurants;
 
-      setFilteredRestaurants(
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
+      // dispatch(addRestaurants(restaurantList));
+      setAllRestaurants(restaurantList);
+      setFilteredRestaurants(restaurantList);
     } catch (err) {
       console.log("error ", err);
     }
   }
-  if (!allRestaurants) return null;
 
   return allRestaurants?.length === 0 ? (
     <Shimmer />
@@ -85,7 +87,7 @@ const Body = () => {
         ></input>
       </div>
       <div className="flex flex-wrap justify-center" data-testid="res-list">
-        {/* You have to write logic for NO restraunt fount here */}
+        {/* You have to write logic for NO restaurant found here */}
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link

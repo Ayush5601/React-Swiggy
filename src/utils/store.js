@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cartSlice";
+import restaurantSlice from "./restaurantsSlice";
 
 const store = configureStore({
   reducer: {
     cart: cartSlice,
+    restaurants: restaurantSlice,
   },
 });
 
@@ -13,7 +15,7 @@ export default store;
  * Create Store
  *  - configureStore() - RTK
  *
- * Provide my stor to app
+ * Provide my store to app
  *  - <Provider store = {store}> - import from react-redux
  *
  * Slice
@@ -34,5 +36,4 @@ export default store;
  *             user: userSlice
  *         }
  * }
- *
- * */
+ **/
