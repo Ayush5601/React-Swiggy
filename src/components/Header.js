@@ -10,7 +10,12 @@ import { useSelector } from "react-redux";
 
 const Title = () => (
   <a href="/">
-    <img data-testid="logo" className="h-28 p-2" alt="logo" src={Logo} />
+    <img
+      data-testid="logo"
+      className="h-28 p-2 rounded-lg"
+      alt="logo"
+      src={Logo}
+    />
   </a>
 );
 
@@ -24,7 +29,7 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex justify-between bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
+    <div className="flex flex-wrap justify-between bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
       <Title />
       <div className="nav-items">
         <ul className="flex py-10">
@@ -52,11 +57,19 @@ const Header = () => {
         OnlineStatus : {isOnline ? "✅" : "🔴"}
       </h1>
       {isLoggedIn ? (
-        <button className="mr-10 pb-2" onClick={() => setIsLoggedIn(false)}>
+        <button
+          type="button"
+          className="mr-10 pb-2"
+          onClick={() => setIsLoggedIn(false)}
+        >
           Logout
         </button>
       ) : (
-        <button className="mr-10 pb-2" onClick={() => setIsLoggedIn(true)}>
+        <button
+          type="button"
+          className="mr-10 pb-2"
+          onClick={() => setIsLoggedIn(true)}
+        >
           Login
         </button>
       )}

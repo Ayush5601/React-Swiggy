@@ -19,17 +19,13 @@ const Body = () => {
 
   const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
-
   async function getRestaurants() {
     try {
       const data = await fetch(PROXY_URL + FETCH_RESTAURANT_URL);
       const json = await data.json();
 
       const restaurantList =
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
 
       // dispatch(addRestaurants(restaurantList));
@@ -39,6 +35,10 @@ const Body = () => {
       console.log("error ", err);
     }
   }
+
+  useEffect(() => {
+    getRestaurants();
+  }, []);
 
   return allRestaurants?.length === 0 ? (
     <Shimmer />
@@ -80,6 +80,7 @@ const Body = () => {
           value={user.name}
           onChange={(e) =>
             setUser({
+              //copies the previous object data and updates the specified field
               ...user,
               name: e.target.value,
             })
@@ -88,7 +89,7 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap justify-center" data-testid="res-list">
         {/* You have to write logic for NO restaurant found here */}
-        {filteredRestaurants.map((restaurant) => {
+        {filteredRestaurants?.map((restaurant) => {
           return (
             <Link
               to={"/restaurant/" + restaurant?.info?.id}

@@ -59,7 +59,7 @@ const RestaurantMenu = () => {
       <div className="flex justify-center">
         <div className="p-5">
           {/* <Carousel images={foodImages} /> */}
-          <div className="w-[500px] mt-10">
+          <div className="w-[500px] mt-5">
             <Carousel>
               {foodImages.map((s, index) => (
                 <img
