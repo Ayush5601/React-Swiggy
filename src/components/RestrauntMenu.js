@@ -23,24 +23,24 @@ const RestaurantMenu = () => {
   const {
     name,
     areaName,
-    cloudinaryImageId,
     costForTwoMessage,
     avgRatingString,
     totalRatingsString,
     city,
     aggregatedDiscountInfoV2,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  } = resInfo?.cards[2]?.card?.card?.info;
 
   const categoryCards =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    resInfo?.cards[resInfo.cards.length - 1]?.groupedCard?.cardGroupMap?.REGULAR
+      ?.cards;
 
-  const categories = categoryCards.filter(
+  const categories = categoryCards?.filter(
     (c) =>
       c.card?.["card"]?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 
-  const recommendedCategory = categories[0];
+  const recommendedCategory = categories ? categories[0] : "";
 
   const foodImages = [];
   recommendedCategory?.card?.card?.itemCards.map((foodItem) => {
@@ -53,7 +53,7 @@ const RestaurantMenu = () => {
       <div className="text-center">
         <span className="text-4xl pb-4 font-semibold mr-2">{name} -</span>
         <span className="text-xl mb-4 font-semibold">
-          {aggregatedDiscountInfoV2.descriptionList[0].meta}
+          {aggregatedDiscountInfoV2?.descriptionList[0].meta}
         </span>
       </div>
       <div className="flex justify-center">
@@ -61,9 +61,9 @@ const RestaurantMenu = () => {
           {/* <Carousel images={foodImages} /> */}
           <div className="w-[500px] mt-5">
             <Carousel>
-              {foodImages.map((s, index) => (
+              {foodImages?.map((s, index) => (
                 <img
-                  key={s}
+                  key={index}
                   className="mb-2"
                   src={IMG_CDN_URL + s}
                   alt="restaurantFoodImage"
