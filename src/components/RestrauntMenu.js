@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
     totalRatingsString,
     city,
     aggregatedDiscountInfoV2,
-  } = resInfo?.cards[2]?.card?.card?.info;
+  } = resInfo?.cards[0]?.card?.card?.info;
 
   const categoryCards =
     resInfo?.cards[resInfo.cards.length - 1]?.groupedCard?.cardGroupMap?.REGULAR
