@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
     totalRatingsString,
     city,
     aggregatedDiscountInfoV2,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  } = resInfo?.cards[2]?.card?.card?.info;
 
   const categoryCards =
     resInfo?.cards[resInfo.cards.length - 1]?.groupedCard?.cardGroupMap?.REGULAR
@@ -64,7 +64,7 @@ const RestaurantMenu = () => {
               {foodImages?.map((s, index) => (
                 <img
                   key={index}
-                  className="mb-2"
+                  className="mb-2 rounded-3xl"
                   src={IMG_CDN_URL + s}
                   alt="restaurantFoodImage"
                 />
