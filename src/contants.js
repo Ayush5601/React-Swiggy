@@ -7,7 +7,7 @@ export const IMG_CDN_URL =
 export const FETCH_MENU_URL =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.161098872453437&lng=79.07760199159384&restaurantId=";
 
-export const PROXY_URL = "https://cors-proxy.fringe.zone/";
+export const PROXY_URL = "https://cors-anywhere-sgp2.onrender.com/";
 
 export const restaurantList = [
   {
